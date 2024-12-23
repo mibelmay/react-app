@@ -3,25 +3,16 @@ import styled from 'styled-components';
 import { usePriorityTodoItem } from '../../data/hooks/useData';
 
 export const priorityOptions = [
-  { color: '', value: '', label: '' },
-  { color: '#E4717A', value: 'сложно', label: 'сложно' },
-  { color: '#FFCF48', value: 'средне', label: 'средне' },
-  { color: '#1cac78', value: 'легко', label: 'легко' },
+  { value: '', label: '' },
+  { value: 'сложно', label: 'сложно' },
+  { value: 'средне', label: 'средне' },
+  { value: 'легко', label: 'легко' },
 ];
 
 const PrioritySelect = styled.select`
   margin-left: 10px;
   background-color: white;
   border: 1px solid #ccc;
-
-  color: ${props => {
-    const option = priorityOptions.find(opt => opt.value === props.value);
-    return option ? option.color : 'black';
-  }};
-
-  &:focus {
-    color: black;
-  }
 `;
 
 export const Priority = ({ id, priority, setPriority }) => {

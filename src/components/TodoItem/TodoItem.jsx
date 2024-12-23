@@ -6,7 +6,7 @@ import {useCheckTodoItem, useDeleteTodoItem} from '../../data/hooks/useData';
 import {Priority} from './Priority';
 
 const checkedCss = css`
-  color: #B5B5BA;
+  color: #696969;
   text-decoration: line-through;
 `
 const Title = styled.span(props => {
@@ -54,7 +54,7 @@ export const TodoItem = ({id, title, checked, itemPriority}) => {
 
   
   return (
-    <TodoItemContainer>
+    <TodoItemContainer priority={priority}>
       <TodoItemCheckbox checked={checked} onCheck={handleCheck}/>
       <Title checked={checked}>
         {title}

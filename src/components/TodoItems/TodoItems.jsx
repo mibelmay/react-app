@@ -9,7 +9,7 @@ import {priorityOptions} from '../TodoItem/Priority';
 
 
 const SortButton = styled.button`
-  background-color: #bcd6d6;
+  background-color: #9c9c9c;
   color: black;
   align-self: center;
   width: 50%;
@@ -22,7 +22,6 @@ const SortButton = styled.button`
 
 export const TodoItems = () => {
   const [searchValue, setSearchValue] = useState('');  //
-  const [filterPriority, setFilterPriority] = useState(null);
   const [sortAscending, setSortAscending] = useState(true);
   const {data: todoItems, isLoading} = useData();
 
@@ -43,11 +42,7 @@ export const TodoItems = () => {
     return searchValue.length >= 3 ? isSearched : true;
   });
 
-  const filteredByPriorityItems = filterPriority
-    ? filteredBySearchItems.filter(item => item.priority === filterPriority)
-    : filteredBySearchItems;
-
-  const sortedItems = [...filteredByPriorityItems].sort((a, b) => {
+  const sortedItems = [...filteredBySearchItems].sort((a, b) => {
     const priorityOrder = { 'сложно': 3, 'средне': 2, 'легко': 1};
     return sortAscending
       ? priorityOrder[a.priority] - priorityOrder[b.priority]
