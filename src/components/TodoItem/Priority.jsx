@@ -3,16 +3,21 @@ import styled from 'styled-components';
 import { usePriorityTodoItem } from '../../data/hooks/useData';
 
 export const priorityOptions = [
-  { value: '', label: '' },
-  { value: 'сложно', label: 'сложно' },
-  { value: 'средне', label: 'средне' },
-  { value: 'легко', label: 'легко' },
+  { color: "#ffffff", value: '', label: '' },
+  { color: "#ebc2af", value: 'сложно', label: 'сложно' },
+  { color: "#fdeaa8", value: 'средне', label: 'средне' },
+  { color: "#d0f0c0", value: 'легко', label: 'легко' },
 ];
 
 const PrioritySelect = styled.select`
   margin-left: 10px;
+  width: 25%;
   background-color: white;
   border: 1px solid #ccc;
+  background-color: ${(props) => {
+    const option = priorityOptions.find(opt => opt.value === props.value);
+    return option ? option.color : 'white';
+  }};
 `;
 
 export const Priority = ({ id, priority, setPriority }) => {
@@ -26,9 +31,7 @@ export const Priority = ({ id, priority, setPriority }) => {
   return (
     <PrioritySelect value={priority} onChange={onChangeHandler}>
       {priorityOptions.map(option => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
+        <option key={option.value} value={option.value} style={{ backgroundColor: option.color }}></option>
       ))}
     </PrioritySelect>
   );
