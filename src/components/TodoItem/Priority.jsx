@@ -14,6 +14,7 @@ const PrioritySelect = styled.select`
   width: 25%;
   background-color: white;
   border: 1px solid #ccc;
+  border-radius: 10px 10px;
   background-color: ${(props) => {
     const option = priorityOptions.find(opt => opt.value === props.value);
     return option ? option.color : 'white';
